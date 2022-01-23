@@ -1,22 +1,22 @@
 # Mock the fck
 
-Originally, Mockery-example
+Originally it's `Mockery-example`
 
 Example case for [mockery issue #128](https://github.com/vektra/mockery/issues/128) filed with the golang tool "[mockery](https://github.com/vektra/mockery)".
 
-### Sample output:
+But right now, I added more complex examples
 
-```bash
-$ go run main.go
-common prefix: {
-  Prefix: "2017-01-01"
-}
-content: {
-  Key: "foo-object"
-}
-```
+#### Topics
 
-## How to generate S3API from vendor code ?
+- Mock
+- 
+#### Scripts
+
+- Remove duplicated vscode plugin on mac
+
+#### Mock notes:
+
+##### How to generate S3API from vendor code ?
 
 use `go mod vendor` to download code
 
@@ -29,7 +29,7 @@ mockgen --build_flags=--mod=mod github.com/aws/aws-sdk-go/service/s3 S3
 `
 is wrong
 
-## 1. Mockgen 
+##### 1. Mockgen 
 
 [S3API is interface](https://github.com/aws/aws-sdk-go/blob/main/service/s3/s3iface/interface.go)
 
@@ -38,7 +38,7 @@ is wrong
 mockgen --build_flags=--mod=mod github.com/aws/aws-sdk-go/service/s3/s3iface S3API  > mocks/second_mocks.go
 `
 
-## 2. Mockery
+##### 2. Mockery
 
 What if I want mockery api for mocking and generation ??
 
@@ -50,7 +50,7 @@ What if I want mockery api for mocking and generation ??
 mockery --dir vendor/github.com/aws/aws-sdk-go/service/s3/s3iface --name S3API
 ```
 
-## other takeaway cmds
+##### other takeaway cmds
 
 run `go mod vendor` to pull code
 
@@ -58,7 +58,7 @@ run `go mod vendor` to pull code
 
 `import _ "github.com/golang/mock/mockgen/model"`
 
-## Issue of method 2 under Q&A readme of mockgen
+##### Issue of method 2 under Q&A readme of mockgen
 
 Better try method 3 !
 
@@ -71,14 +71,15 @@ prog.go:14:2: vendor/github.com/aws/aws-sdk-go/service/s3 must be imported as gi
 2022/01/21 17:54:17 Loading input failed: exit status 1
 ```
 
-## Buggy Test Coverage
+##### Buggy Test Coverage
 
 run test with coverage.
 shows main.go 0% covered, but mocks folder has 33%!!!
 
 Why on earth we calculate coverage stats on that bits !!
 
-## Futures
+### Futures
+
 1. Why gomock or mockery not generate from struct as extra feature,
 as in case of s3 struct.
 
