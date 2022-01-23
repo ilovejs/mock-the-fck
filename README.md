@@ -1,4 +1,4 @@
-# Mock the fck
+# Go Testing and Scripting Pattern
 
 Originally it's `Mockery-example`
 
